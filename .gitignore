@@ -132,6 +132,7 @@ dmypy.json
 data/curated/
 models/
 path/to/venv.
+plots/
 
 # OSX .DS_Store file
 .DS_Store
