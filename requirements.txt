@@ -1,2 +1,2 @@
 Terminal:
-pip install pyspark 
+pip install pyspark pandas numpy seaborn matplotlib scikit-learn
