@@ -1,2 +1,7 @@
-Terminal:
-pip install pyspark pandas numpy seaborn matplotlib scikit-learn
+#to install:
+pyspark 
+pandas 
+numpy 
+seaborn 
+matplotlib 
+scikit-learn
