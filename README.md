@@ -48,9 +48,11 @@ Additionally, income data for SA2 is sourced from the ABS, as is the SA2 to post
 
    - `00_approach_summary.ipynb` (read-only)
    - `01_etl.ipynb`
-   - `02_fraud_model.ipynb`
-   - `03_final_rankings.ipynb`
-   - Optional: `04_plots.ipynb`, `05_time_series.ipynb`, `06_income_outlier.ipynb`
+   - `02_income_outlier.ipynb`
+   - `03_fraud_model.ipynb`
+   - `04_time_series.ipynb`
+   - `05_final_rankings.ipynb`
+   - `06_plots.ipynb`
 
 3. Data expectations
    - Source tables under `data/tables/` must be present
