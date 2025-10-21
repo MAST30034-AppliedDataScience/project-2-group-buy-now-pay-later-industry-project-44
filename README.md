@@ -12,14 +12,14 @@ Andy Chen
 
 Josh Jones
 
-Note: Make sure to read the `README.md` located in `./data/README.md` for extra details on the synthetically generated data.
-
 ## Project Overview
 
 This project aims to create a ranking of potential merchants to onboard to a BNPL firm, utilising metrics potential growth and loss, current takings and potential future revenue. The final ranking is a composite of these metrics, and are split into seperate business areas to see where the firm can profit the most.
 
-Provided data is synthetically generated individual transaction data, user data and merchant data.
+Provided BNPL transaction data is synthetically generated individual transaction data, user data and merchant data.
 Additionally, income data for SA2 is sourced from the ABS, as is the SA2 to postcode dataset.
+
+Note: Make sure to read the `README.md` located in `./data/README.md` for extra details on the synthetically generated data.
 
 ## Repository Structure
 
@@ -45,6 +45,7 @@ Additionally, income data for SA2 is sourced from the ABS, as is the SA2 to post
    - Python 3.10+
    - Install dependencies: `pip install -r requirements.txt`
    - Local PySpark is used; the notebooks set reasonable defaults for memory/shuffle
+   - Spark environments may differ between notebooks based on operating system of editor
 
 2. Recommended order (open and run notebooks in this sequence):
 
@@ -65,4 +66,5 @@ Additionally, income data for SA2 is sourced from the ABS, as is the SA2 to post
 - Paths in notebooks are relative to the `notebooks/` directory (e.g., `../data/...`)
 - Outputs are overwritten to keep a clean state (idempotent runs)
 - Some steps (window operations) warn about single-partition execution on local; for larger scale, configure Spark partitions and executors accordingly
-- All random processes use fixed seeds 'np.random.seed(42)' to ensure reproducibility
+- All random processes use fixed seeds `np.random.seed(42)` to ensure reproducibility
+
