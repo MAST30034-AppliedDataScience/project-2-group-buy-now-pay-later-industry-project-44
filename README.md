@@ -14,9 +14,11 @@ Josh Jones
 
 Note: Make sure to read the `README.md` located in `./data/README.md` for extra details on the synthetically generated data.
 
-This project aims to create a ranking of potential merchants to onboard to a BNPL firm, utilising metrics like potential growth and loss, current takings and potential future revenue. The final ranking is a composite of each of these metrics, and are split into seperate business areas to see the diversity.
+## Project Overview
 
-Provided data is synthetically generated indivdual transaction data, user data and merchant data.
+This project aims to create a ranking of potential merchants to onboard to a BNPL firm, utilising metrics potential growth and loss, current takings and potential future revenue. The final ranking is a composite of these metrics, and are split into seperate business areas to see where the firm can profit the most.
+
+Provided data is synthetically generated individual transaction data, user data and merchant data.
 Additionally, income data for SA2 is sourced from the ABS, as is the SA2 to postcode dataset.
 
 ## Repository Structure
@@ -24,11 +26,11 @@ Additionally, income data for SA2 is sourced from the ABS, as is the SA2 to post
 - `notebooks/`
   - `00_approach_summary.ipynb` — Project overview, approach, issues, assumptions, limitations
   - `01_etl.ipynb` — Data curation, joins, outlier handling, segmentation
-  - `02_fraud_model.ipynb` — Tiered fraud probability (direct, user-decay, model), EB aggregation, diagnostics
-  - `03_final_rankings.ipynb` — Composite rankings (takings, loss potential, growth)
-  - `04_plots.ipynb` — Exploratory plots and summaries
-  - `05_time_series.ipynb` — Time-series exploration of transactions
-  - `06_income_outlier.ipynb` — SA2 income analysis and binning
+  - `02_income_outlier.ipynb` — SA2 income analysis and binning
+  - `03_fraud_model.ipynb` — Tiered fraud probability (direct, user-decay, model), EB aggregation, diagnostics
+  - `04_time_series.ipynb` — Time-series exploration of transactions, composite rankings of growth
+  - `05_final_rankings.ipynb` — Composite rankings (takings, loss potential, growth)
+  - `06_plots.ipynb` — Exploratory plots and summaries
 - `data/`
   - `tables/` — provided source tables (parquet/csv)
   - `curated/` — pipeline outputs (merchant_transactions, agg_by_userbiz, rankings)
@@ -63,3 +65,4 @@ Additionally, income data for SA2 is sourced from the ABS, as is the SA2 to post
 - Paths in notebooks are relative to the `notebooks/` directory (e.g., `../data/...`)
 - Outputs are overwritten to keep a clean state (idempotent runs)
 - Some steps (window operations) warn about single-partition execution on local; for larger scale, configure Spark partitions and executors accordingly
+- All random processes use fixed seeds 'np.random.seed(42)' to ensure reproducibility
