@@ -1,4 +1,5 @@
-#  Buy Now, Pay Later Project Group 44
+# Buy Now, Pay Later Project Group 44
+
 Maintained by group members:
 
 Lachy Bowker
@@ -17,3 +18,46 @@ This project aims to create a ranking of potential merchants to onboard to a BNP
 
 Provided data is synthetically generated indivdual transaction data, user data and merchant data.
 Additionally, income data for SA2 is sourced from the ABS, as is the SA2 to postcode dataset.
+
+## Repository Structure
+
+- `notebooks/`
+  - `00_approach_summary.ipynb` — Project overview, approach, issues, assumptions, limitations
+  - `01_etl.ipynb` — Data curation, joins, outlier handling, segmentation
+  - `02_fraud_model.ipynb` — Tiered fraud probability (direct, user-decay, model), EB aggregation, diagnostics
+  - `03_final_rankings.ipynb` — Composite rankings (takings, loss potential, growth)
+  - `04_plots.ipynb` — Exploratory plots and summaries
+  - `05_time_series.ipynb` — Time-series exploration of transactions
+  - `06_income_outlier.ipynb` — SA2 income analysis and binning
+- `data/`
+  - `tables/` — provided source tables (parquet/csv)
+  - `curated/` — pipeline outputs (merchant_transactions, agg_by_userbiz, rankings)
+  - `final_ranks/` — final composite and per-segment rankings
+- `artifacts/` — model/pipeline outputs written by notebooks (e.g., `fraud_outputs/`)
+- `plots/` — saved figures (calibration, lift, errors, segment EFLR)
+
+## How to Run
+
+1. Environment
+
+   - Python 3.10+
+   - Install dependencies: `pip install -r requirements.txt`
+   - Local PySpark is used; the notebooks set reasonable defaults for memory/shuffle
+
+2. Recommended order (open and run notebooks in this sequence):
+
+   - `00_approach_summary.ipynb` (read-only)
+   - `01_etl.ipynb`
+   - `02_fraud_model.ipynb`
+   - `03_final_rankings.ipynb`
+   - Optional: `04_plots.ipynb`, `05_time_series.ipynb`, `06_income_outlier.ipynb`
+
+3. Data expectations
+   - Source tables under `data/tables/` must be present
+   - Notebooks write curated outputs to `data/curated/` and rankings to `data/final_ranks/`
+
+## Reproducibility Notes
+
+- Paths in notebooks are relative to the `notebooks/` directory (e.g., `../data/...`)
+- Outputs are overwritten to keep a clean state (idempotent runs)
+- Some steps (window operations) warn about single-partition execution on local; for larger scale, configure Spark partitions and executors accordingly
