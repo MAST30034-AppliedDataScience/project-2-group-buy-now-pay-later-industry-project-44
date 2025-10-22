@@ -42,7 +42,7 @@ Note: Make sure to read the `README.md` located in `./data/README.md` for extra 
 
 1. Environment
 
-   - Python 3.10+
+   - Python 3.9+
    - Install dependencies: `pip install -r requirements.txt`
    - Local PySpark is used; the notebooks set reasonable defaults for memory/shuffle
    - Spark environments may differ between notebooks based on operating system of editor
@@ -67,4 +67,3 @@ Note: Make sure to read the `README.md` located in `./data/README.md` for extra 
 - Outputs are overwritten to keep a clean state (idempotent runs)
 - Some steps (window operations) warn about single-partition execution on local; for larger scale, configure Spark partitions and executors accordingly
 - All random processes use fixed seeds `np.random.seed(42)` to ensure reproducibility
-
